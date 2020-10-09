@@ -16,16 +16,6 @@ import {
 export class UserformComponent implements OnInit {
   myReactiveform: FormGroup;
   list = [];
-  @ViewChild('ReactiveFormsModule') myReactiveforms: NgForm;
-  // formdata: any;
-  //   firstname: 'sss',
-  //   lastname: '',
-  //   phonenumber: '',
-  //   email: '',
-  //   accountnumber: '',
-  //   ifsccode: '',
-  //   notes: '',
-  // ];
 
   constructor() {}
 
@@ -44,8 +34,6 @@ export class UserformComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onsubmit() {
-    // console.log(this.myReactiveform.value);
-    // console.log('data');
     const data = this.myReactiveform.value;
     this.list.push(data);
   }
