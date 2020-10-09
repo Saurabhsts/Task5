@@ -1,0 +1,108 @@
+<div class="page-area">
+  <h2 class="text-center" style="background-color: blueviolet;">Form</h2>
+  <div class="container rounded shadow border top pt-3">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Add Details</h2>
+        <form [formGroup]="myReactiveform" (ngSubmit)="onsubmit()">
+          <div class="form-group">
+            <label for="id">First Name</label>
+            <input type="text" id="firstname" class="form-control" placeholder="Enter First Name"
+              formControlName="firstname" />
+            <small class="text-danger"
+              *ngIf="!myReactiveform.get('firstname').valid && myReactiveform.get('firstname').touched">It is
+              Mandatory</small>
+          </div>
+          <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" id="lastname" class="form-control" placeholder="Enter Last Name"
+              formControlName="lastname" />
+            <small class="text-danger"
+              *ngIf="!myReactiveform.get('lastname').valid && myReactiveform.get('lastname').touched">It is
+              Mandatory</small>
+          </div>
+          <div class="form-group">
+            <select class="form-control" formControlName="gender">
+              <option value="default">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price">Phone Number</label>
+            <input type="text" id="phonenumber" class="form-control" formControlName="phonenumber"
+              placeholder="Optional 10 digit mob no" maxlength="10" />
+          </div>
+          <div class="form-group">
+            <label for="price">Email </label>
+            <input type="text" id="email" class="form-control" placeholder="Enter Email " formControlName="email" />
+            <small class="text-danger"
+              *ngIf="!myReactiveform.get('email').valid && myReactiveform.get('email').touched">It is
+              Mandatory</small>
+          </div>
+          <div class="form-group">
+            <label for="price">Account No </label>
+            <input type="number" id="accountnumber" class="form-control" placeholder="Enter your Account no"
+              formControlName="accountnumber" />
+            <small class="text-danger"
+              *ngIf="!myReactiveform.get('accountnumber').valid && myReactiveform.get('accountnumber').touched">It is
+              Mandatory</small>
+          </div>
+          <div class="form-group">
+            <label for="price">IFSC Code </label>
+            <input type="text" id="ifsccode" class="form-control" placeholder="Enter IFSC Code"
+              formControlName="ifsccode" maxlength="5" />
+            <small class="text-danger"
+              *ngIf="!myReactiveform.get('ifsccode').valid && myReactiveform.get('ifsccode').touched">It is
+              Mandatory</small>
+          </div>
+          <div class="form-group">
+            <label for="price">Notes </label>
+            <textarea class="form-control" placeholder="Add notes it is optional" formControlName="notes"></textarea>
+          </div>
+
+          <button class="btn btn-success">Submit
+
+          </button>
+
+        </form>
+      </div>
+      <div class="col-md-9">
+        <h2 class="text-center">Details</h2>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Email</th>
+              <th scope="col">Account No</th>
+              <th scope="col">IFSC Code</th>
+              <th scope="col">Notes</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of list; index as i">
+              <td>{{i+1}}</td>
+              <td>{{ item.firstname }}</td>
+              <td>{{ item.lastname }}</td>
+              <td>{{ item.gender }}</td>
+              <td>{{ item.phonenumber }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.accountnumber }}</td>
+              <td>{{ item.ifsccode }}</td>
+              <td>{{ item.notes }}</td>
+
+
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
