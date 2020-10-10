@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <h1>Banks</h1>
+    </div>
+    <div class="col-lg-6 col-md-6 d-flex justify-content-end align-items-center">
+      <span class="text-bold">City : </span> &nbsp;&nbsp;
+      <select #selectedCity class="form-control w-50" (change)="onSelectCity(selectedCity.value)">
+        <option [selected]="city==='DELHI'" value="DELHI">DELHI</option>
+        <option [selected]="city==='MUMBAI'" value="MUMBAI">MUMBAI</option>
+        <option [selected]="city==='PUNE'" value="PUNE">PUNE</option>
+        <option [selected]="city==='GURGAON'" value="GURGAON">GURGAON</option>
+      </select>
+    </div>
+  </div>
+</div>
+<table class="table table-dark position-absolute" [ngStyle]="isLoadingResults?{opacity:0.4}:{opacity:1}">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bank Name</th>
+      <th scope="col">Bank id </th>
+      <th scope="col">Branch</th>
+
+      <th scope="col">Ifsc</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bank of banks; let index = index">
+      <td> {{index + 1}} </td>
+      <td> {{bank.bank_name}} </td>
+      <td> {{bank.bank_name}} </td>
+
+      <td> {{bank.branch}} </td>
+      <td> {{bank.ifsc}} </td>
+      <td> {{bank.city}} </td>
+      <td> {{bank.state}} </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="isLoadingResults" class="loader-box">
+  <div class="spinner-border text-success" role="status" style="width: 4rem;height: 4rem;">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
