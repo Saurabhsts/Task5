@@ -32,11 +32,15 @@
       <td> {{index + 1}} </td>
       <td> {{bank.bank_name}} </td>
       <td> {{bank.bank_name}} </td>
-
       <td> {{bank.branch}} </td>
       <td> {{bank.ifsc}} </td>
       <td> {{bank.city}} </td>
       <td> {{bank.state}} </td>
+      <td>
+        <button mat-icon-button color="accent" (click)="onRowDesc(bank)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

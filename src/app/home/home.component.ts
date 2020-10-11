@@ -1,6 +1,8 @@
 import { HomeService } from './../service/home.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { RowDescriptionComponent } from '../row-description/row-description.component';
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
   city = 'DELHI';
   isLoadingResults = false;
 
-  constructor(private $homeservice: HomeService) {}
+  constructor(private $homeservice: HomeService, private $dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.Getallbanks();
@@ -32,4 +34,12 @@ export class HomeComponent implements OnInit {
     this.city = selectedCity;
     this.Getallbanks();
   }
+  // tslint:disable-next-line: typedef
+  onRowDesc(bank) {
+    const dialogRef = this.$dialog.open(RowDescriptionComponent, {
+      height: 'auto',
+      width: 'auto',
+      data: bank
+    });
+   }
 }

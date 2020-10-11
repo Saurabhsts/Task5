@@ -8,14 +8,24 @@ import { UserformComponent } from './userform/userform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RowDescriptionComponent } from './row-description/row-description.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [AppComponent, UserformComponent, HomeComponent],
+  declarations: [AppComponent, UserformComponent, HomeComponent, RowDescriptionComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule
+
   ],
   providers: [HomeService],
   bootstrap: [AppComponent],
