@@ -24,10 +24,10 @@ export class UserformComponent implements OnInit {
       firstname: new FormControl(null, Validators.required),
       lastname: new FormControl(null, Validators.required),
       gender: new FormControl('default', [Validators.required]),
-      phonenumber: new FormControl(null),
+      phonenumber: new FormControl('', Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       accountnumber: new FormControl(null, Validators.required),
-      ifsccode: new FormControl(null, Validators.required),
+      ifsccode: new FormControl('', Validators.required),
       notes: new FormControl(null),
     });
   }
