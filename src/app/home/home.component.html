@@ -6,31 +6,33 @@
     <div class="col-lg-6 col-md-6 d-flex justify-content-end align-items-center">
       <span class="text-bold">City : </span> &nbsp;&nbsp;
       <select #selectedCity class="form-control w-50" (change)="onSelectCity(selectedCity.value)">
-        <option [selected]="city==='DELHI'" value="DELHI">DELHI</option>
-        <option [selected]="city==='MUMBAI'" value="MUMBAI">MUMBAI</option>
-        <option [selected]="city==='PUNE'" value="PUNE">PUNE</option>
-        <option [selected]="city==='GURGAON'" value="GURGAON">GURGAON</option>
-      </select>
+  <option [selected]="city==='DELHI'" value="DELHI">DELHI</option>
+  <option [selected]="city==='MUMBAI'" value="MUMBAI">MUMBAI</option>
+  <option [selected]="city==='PUNE'" value="PUNE">PUNE</option>
+  <option [selected]="city==='GURGAON'" value="GURGAON">GURGAON</option>
+</select>
     </div>
   </div>
 </div>
-<table class="table table-dark position-absolute" [ngStyle]="isLoadingResults?{opacity:0.4}:{opacity:1}">
-  <thead>
+
+<table class="table table-striped" [ngStyle]="isLoadingResults?{opacity:0.4}:{opacity:1}">
+  <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Bank Name</th>
       <th scope="col">Bank id </th>
       <th scope="col">Branch</th>
-
       <th scope="col">Ifsc</th>
       <th scope="col">City</th>
       <th scope="col">State</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let bank of banks; let index = index">
-      <td> {{index + 1}} </td>
-      <td> {{bank.bank_name}} </td>
+    <tr *ngFor="let bank of banks | paginate: 
+    {id: 'listing_pagination',
+     itemsPerPage: 10,
+     currentPage: page,
+     totalItems: totalRecords }; ">
+      
       <td> {{bank.bank_name}} </td>
       <td> {{bank.branch}} </td>
       <td> {{bank.ifsc}} </td>
@@ -41,9 +43,12 @@
           <mat-icon>visibility</mat-icon>
         </button>
       </td>
-    </tr>
+      </tr>
   </tbody>
 </table>
+<div>
+  <pagination-controls class="text-center" id= 'listing_pagination' maxSize ="10" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>
 
 <div *ngIf="isLoadingResults" class="loader-box">
   <div class="spinner-border text-success" role="status" style="width: 4rem;height: 4rem;">

@@ -3,22 +3,31 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RowDescriptionComponent } from '../row-description/row-description.component';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  banks: any;
+  banks: Array<any>;
   city = 'DELHI';
   isLoadingResults = false;
+  // tslint:disable-next-line: ban-types
+  totalRecords: String;
+counter: number;
 
-  constructor(private $homeservice: HomeService, private $dialog: MatDialog) {}
+  // tslint:disable-next-line: ban-types
+  page: Number = 1;
+
+  constructor(private $homeservice: HomeService, private $dialog: MatDialog) {
+    this.banks = new Array<any>();
+  }
 
   ngOnInit(): void {
     this.Getallbanks();
+
   }
+
 
   // tslint:disable-next-line: typedef
   Getallbanks() {
@@ -26,6 +35,7 @@ export class HomeComponent implements OnInit {
     this.$homeservice.Getdata(this.city).subscribe((data) => {
     this.banks = data;
     this.isLoadingResults = false;
+    this.totalRecords = data.results.length;
     });
   }
 
@@ -42,4 +52,5 @@ export class HomeComponent implements OnInit {
       data: bank
     });
    }
+
 }

@@ -13,12 +13,14 @@ import { RowDescriptionComponent } from './row-description/row-description.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [AppComponent, UserformComponent, HomeComponent, RowDescriptionComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxPaginationModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
